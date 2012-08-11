@@ -1,4 +1,8 @@
+require 'active_support/core_ext/object'
+require 'net/http'
+
 #noinspection RubyStringKeysInHashInspection
+
 class Gaffel
   # --- login:
   CLIENT_LOGIN_URL               = 'https://www.google.com/accounts/ClientLogin'
@@ -27,7 +31,7 @@ class Gaffel
                                 :Passwd      => @account[:password],
                                 :source      => @account[:source],
                                 :accountType => ACCOUNT_TYPE,
-                                :service     => SERVICE}.to_query
+                                :service     => SERVICE}.to_param
     @headers_for_get_request = {"GData-Version" => '2',
                                 "Content-Type"  => CONTENT_TYPE}
     @rows_processed          = 0
@@ -91,7 +95,7 @@ class Gaffel
              "end-date"    => @data_spec[:end_date],
              "sort"        => @data_spec[:sort],
              "key"         => @account[:google_api_key],
-             "ids"         => @account[:ga_profile_id]}.to_query
+             "ids"         => @account[:ga_profile_id]}.to_param
     #debug("query", query)
     URI GA_CORE_REPORTING_API_URL + '?' + query
   end
