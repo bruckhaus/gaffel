@@ -22,7 +22,7 @@ describe "GoogleAnalyticsApi" do
 
   describe "http_get_request" do
     it "should generate a valid response" do
-      url = URI "https://www.googleapis.com/analytics/v3/data/ga?ids=ga%3A17160495&dimensions=ga%3Adate&metrics=ga%3Avisitors&start-date=2012-07-08&end-date=2012-07-22&max-results=50"
+      url = @ga_api.send :make_url, 123
       @ga_api.send :get_auth_token
       response = (@ga_api.send :http_get_request, url)
       response.should_not be_nil

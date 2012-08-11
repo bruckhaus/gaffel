@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'gaffel'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2012-08-10'
   s.summary     = "Extract data from Google Analytics (GA) v3.0 API"
   s.description = "Supports extracting 1 metric for 0 or more dimensions, with start and end dates, " +
